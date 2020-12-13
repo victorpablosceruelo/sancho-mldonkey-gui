@@ -5,16 +5,16 @@
 
 package sancho.model.mldonkey;
 
-import gnu.trove.THashMap;
 
 import java.util.Observable;
 import java.util.Set;
 
+import gnu.trove.map.hash.THashMap;
 import sancho.core.ICore;
 
 public abstract class ACollection_Hash extends Observable implements ICollection {
   protected ICore core;
-  protected THashMap infoMap;
+  protected THashMap<Object, Object> infoMap;
 
   ACollection_Hash() {
     this(null);

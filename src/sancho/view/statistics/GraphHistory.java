@@ -5,7 +5,6 @@
 
 package sancho.view.statistics;
 
-import gnu.trove.TIntArrayList;
 
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.jface.preference.PreferenceStore;
@@ -20,6 +19,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Shell;
 
+import gnu.trove.list.array.TIntArrayList;
 import sancho.view.preferences.PreferenceLoader;
 import sancho.view.utility.SResources;
 

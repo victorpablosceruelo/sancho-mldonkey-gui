@@ -5,11 +5,10 @@
 
 package sancho.model.mldonkey;
 
-import gnu.trove.TObjectProcedure;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import gnu.trove.procedure.TObjectProcedure;
 import sancho.core.ICore;
 import sancho.core.Sancho;
 import sancho.model.mldonkey.enums.EnumRoomState;
@@ -84,10 +83,10 @@ public class RoomCollection extends ACollection_Int2 {
     this.notifyObservers(roomMessage);
   }
 
-  static class GetAllOpenRooms implements TObjectProcedure {
+  static class GetAllOpenRooms implements TObjectProcedure<Room> {
     List roomList = new ArrayList();
 
-    public boolean execute(Object object) {
+    public boolean execute(Room object) {
       Room room = (Room) object;
       if (room.getRoomState() == EnumRoomState.OPEN)
         roomList.add(room);

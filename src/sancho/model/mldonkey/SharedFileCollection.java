@@ -5,7 +5,7 @@
 
 package sancho.model.mldonkey;
 
-import gnu.trove.TObjectProcedure;
+import gnu.trove.procedure.TObjectProcedure;
 import sancho.core.ICore;
 import sancho.model.mldonkey.utility.MessageBuffer;
 import sancho.model.mldonkey.utility.OpCodes;
@@ -81,10 +81,10 @@ public class SharedFileCollection extends ACollection_Int2 {
     return totalSizeString != null ? totalSizeString : SResources.S_ES;
   }
 
-  static class CalculateTotalSize implements TObjectProcedure {
+  static class CalculateTotalSize implements TObjectProcedure<SharedFile> {
     long total;
 
-    public boolean execute(Object object) {
+    public boolean execute(SharedFile object) {
       SharedFile sharedFile = (SharedFile) object;
       total += sharedFile.getSize();
       return true;

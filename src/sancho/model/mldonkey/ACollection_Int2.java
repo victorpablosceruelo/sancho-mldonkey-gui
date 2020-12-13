@@ -11,7 +11,7 @@ import java.util.WeakHashMap;
 import sancho.core.ICore;
 import sancho.utility.SwissArmy;
 
-public abstract class ACollection_Int2 extends ACollection_Int {
+public abstract class ACollection_Int2<T> extends ACollection_Int<T> {
 
   private Map addedMap = new WeakHashMap();
   private Map removedMap = new WeakHashMap();

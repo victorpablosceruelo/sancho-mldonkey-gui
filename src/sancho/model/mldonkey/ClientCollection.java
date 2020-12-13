@@ -5,10 +5,10 @@
 
 package sancho.model.mldonkey;
 
-import gnu.trove.TIntArrayList;
-import gnu.trove.TIntObjectProcedure;
-import gnu.trove.TLongIntHashMap;
-import gnu.trove.TObjectProcedure;
+import gnu.trove.list.array.TIntArrayList;
+import gnu.trove.map.hash.TLongIntHashMap;
+import gnu.trove.procedure.TIntObjectProcedure;
+import gnu.trove.procedure.TObjectProcedure;
 import sancho.core.ICore;
 import sancho.core.Sancho;
 import sancho.model.mldonkey.enums.EnumClientType;
@@ -177,14 +177,14 @@ public class ClientCollection extends ACollection_Int {
     processMap(uploadersWeakMap, messageBuffer);
   }
 
-  static class DisposeAll implements TObjectProcedure {
+  static class DisposeAll implements TObjectProcedure<Object> {
     public boolean execute(Object object) {
       ((Client) object).deleteObservers();
       return true;
     }
   }
 
-  class CleanDeadClients implements TIntObjectProcedure {
+  class CleanDeadClients implements TIntObjectProcedure<Object> {
     public boolean execute(int i, Object object) {
       Client client = (Client) object;
       if (client.countObservers() == 0) {

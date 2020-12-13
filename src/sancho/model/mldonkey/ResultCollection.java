@@ -5,8 +5,8 @@
 
 package sancho.model.mldonkey;
 
-import gnu.trove.TIntIntHashMap;
-import gnu.trove.TIntObjectHashMap;
+import gnu.trove.map.hash.TIntIntHashMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
 import sancho.core.ICore;
 import sancho.model.mldonkey.utility.OpCodes;
 import sancho.model.mldonkey.utility.MessageBuffer;
@@ -24,7 +24,7 @@ public class ResultCollection extends ACollection_Int {
   public boolean filterPornography;
   
   // must retain them all?
-  private TIntObjectHashMap resultIntMap;
+  private TIntObjectHashMap<Result> resultIntMap;
   
   public synchronized int getNumResults() {
     return resultIntMap.size();
@@ -147,7 +147,7 @@ public class ResultCollection extends ACollection_Int {
     return resultIntMap.contains(key);
   }
 
-  public synchronized void resultMapPut(int key, Object value) {
+  public synchronized void resultMapPut(int key, Result value) {
     resultIntMap.put(key, value);
   }
   

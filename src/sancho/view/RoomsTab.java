@@ -5,8 +5,6 @@
 
 package sancho.view;
 
-import gnu.trove.TIntObjectHashMap;
-
 import java.util.Observable;
 import java.util.Observer;
 
@@ -21,6 +19,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Composite;
 
+import gnu.trove.map.hash.TIntObjectHashMap;
 import sancho.core.Sancho;
 import sancho.model.mldonkey.Room;
 import sancho.model.mldonkey.User;
@@ -41,14 +40,14 @@ import sancho.view.viewFrame.SashViewListener;
 public class RoomsTab extends AbstractTab implements Observer {
   protected CTabFolder cTabFolder;
   protected RoomCTabFolderViewFrame cTabFolderViewFrame;
-  protected TIntObjectHashMap roomTabMap;
+  protected TIntObjectHashMap<CTabItem> roomTabMap;
 
   public RoomsTab(MainWindow mainWindow, String prefString) {
     super(mainWindow, prefString);
   }
 
   public void closeAllClosedRooms() {
-    Object[] oA = roomTabMap.getValues();
+	Object[] oA = roomTabMap.values();
     for (int i = 0; i < oA.length; i++) {
       CTabItem cTabItem = (CTabItem) oA[i];
       Room room = (Room) cTabItem.getData("room");
@@ -58,7 +57,7 @@ public class RoomsTab extends AbstractTab implements Observer {
   }
 
   public void closeAllTabs() {
-    Object[] oA = roomTabMap.getValues();
+    Object[] oA = roomTabMap.values();
     for (int i = 0; i < oA.length; i++) {
       CTabItem cTabItem = (CTabItem) oA[i];
       closeTab(cTabItem);

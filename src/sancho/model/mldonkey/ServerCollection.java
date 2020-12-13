@@ -5,13 +5,12 @@
 
 package sancho.model.mldonkey;
 
-import gnu.trove.TIntArrayList;
-import gnu.trove.TIntObjectProcedure;
-import gnu.trove.TLongIntHashMap;
-import gnu.trove.TObjectProcedure;
-
 import java.net.InetAddress;
 
+import gnu.trove.list.array.TIntArrayList;
+import gnu.trove.map.hash.TLongIntHashMap;
+import gnu.trove.procedure.TIntObjectProcedure;
+import gnu.trove.procedure.TObjectProcedure;
 import sancho.core.ICore;
 import sancho.core.Sancho;
 import sancho.model.mldonkey.enums.EnumHostState;
@@ -186,7 +185,7 @@ public class ServerCollection extends ACollection_Int2 {
     displayNodes = PreferenceLoader.loadBoolean("displayNodes");
   }
 
-  static class CountNetworkConnected implements TObjectProcedure {
+  static class CountNetworkConnected implements TObjectProcedure<Server> {
     private int counter;
 
     private EnumNetwork networkEnum;
@@ -195,7 +194,7 @@ public class ServerCollection extends ACollection_Int2 {
       this.networkEnum = networkEnum;
     }
 
-    public boolean execute(Object object) {
+    public boolean execute(Server object) {
       Server server = (Server) object;
       if (server.isConnected() && server.getEnumNetwork() == networkEnum)
         counter++;
@@ -207,7 +206,7 @@ public class ServerCollection extends ACollection_Int2 {
     }
   }
 
-  static class RemoveNetworkServers implements TIntObjectProcedure {
+  static class RemoveNetworkServers implements TIntObjectProcedure<Object> {
     private EnumNetwork enumNetwork;
 
     public RemoveNetworkServers(EnumNetwork enumNetwork) {

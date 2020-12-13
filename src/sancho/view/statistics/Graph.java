@@ -5,11 +5,10 @@
 
 package sancho.view.statistics;
 
-import gnu.trove.TIntArrayList;
-
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 
+import gnu.trove.list.array.TIntArrayList;
 import sancho.view.preferences.PreferenceLoader;
 
 public class Graph implements Runnable {

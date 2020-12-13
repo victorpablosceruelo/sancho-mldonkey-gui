@@ -5,13 +5,13 @@
 
 package sancho.model.mldonkey;
 
-import gnu.trove.TObjectProcedure;
+import gnu.trove.procedure.TObjectProcedure;
 import sancho.core.ICore;
 import sancho.model.mldonkey.enums.EnumNetwork;
 import sancho.model.mldonkey.utility.MessageBuffer;
 import sancho.utility.SwissArmy;
 
-public class NetworkCollection extends ACollection_Int implements ICollection {
+public class NetworkCollection extends ACollection_Int<Network> implements ICollection {
 
   NetworkCollection(ICore communication) {
     super(communication);
@@ -78,11 +78,11 @@ public class NetworkCollection extends ACollection_Int implements ICollection {
     }
   }
 
-  static class CountEnabledAndSearchable implements TObjectProcedure {
+  static class CountEnabledAndSearchable implements TObjectProcedure<Network> {
 
     private int counter;
 
-    public boolean execute(Object object) {
+    public boolean execute(Network object) {
       Network network = (Network) object;
       if (network.isEnabled() && network.isSearchable())
         counter++;
@@ -115,7 +115,7 @@ public class NetworkCollection extends ACollection_Int implements ICollection {
     }
   }
 
-  static class GetNetworkStats implements TObjectProcedure {
+  static class GetNetworkStats implements TObjectProcedure<Network> {
     StringBuffer stringBuffer = new StringBuffer();
     String nl;
 
@@ -123,7 +123,7 @@ public class NetworkCollection extends ACollection_Int implements ICollection {
       this.nl = nl;
     }
 
-    public boolean execute(Object object) {
+    public boolean execute(Network object) {
       Network network = (Network) object;
       stringBuffer.append(nl + "Network: ");
       stringBuffer.append(network.getName());

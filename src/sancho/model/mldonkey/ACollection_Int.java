@@ -5,19 +5,18 @@
 
 package sancho.model.mldonkey;
 
-import gnu.trove.TIntArrayList;
-import gnu.trove.TIntObjectHashMap;
-import gnu.trove.TIntObjectIterator;
-import gnu.trove.TIntObjectProcedure;
-import gnu.trove.TObjectProcedure;
-
 import java.util.Observable;
 
+import gnu.trove.iterator.TIntObjectIterator;
+import gnu.trove.list.array.TIntArrayList;
+import gnu.trove.map.hash.TIntObjectHashMap;
+import gnu.trove.procedure.TIntObjectProcedure;
+import gnu.trove.procedure.TObjectProcedure;
 import sancho.core.ICore;
 
-public abstract class ACollection_Int extends Observable implements ICollection {
+public abstract class ACollection_Int<T> extends Observable implements ICollection {
   protected ICore core;
-  private TIntObjectHashMap intObjectMap;
+  private TIntObjectHashMap<T> intObjectMap;
 
   ACollection_Int() {
     this(null);
@@ -40,7 +39,7 @@ public abstract class ACollection_Int extends Observable implements ICollection 
     deleteObservers();
   }
 
-  public synchronized boolean forEachValue(TObjectProcedure procedure) {
+  public synchronized boolean forEachValue(TObjectProcedure<T> procedure) {
     return intObjectMap.forEachValue(procedure);
   }
 
@@ -53,14 +52,14 @@ public abstract class ACollection_Int extends Observable implements ICollection 
   }
 
   public synchronized Object[] getValues() {
-    return this.intObjectMap.getValues();
+    return this.intObjectMap.values();
   }
 
-  public TIntObjectIterator iterator() {
+  public TIntObjectIterator<T> iterator() {
     return this.intObjectMap.iterator();
   }
 
-  public synchronized Object put(int key, Object value) {
+  public synchronized T put(int key, T value) {
     return intObjectMap.put(key, value);
   }
 
@@ -76,7 +75,7 @@ public abstract class ACollection_Int extends Observable implements ICollection 
     return this.intObjectMap.size();
   }
 
-  static class CleanIntMap implements TIntObjectProcedure {
+  static class CleanIntMap implements TIntObjectProcedure<Object> {
     TIntArrayList retainIntList;
 
     public CleanIntMap(TIntArrayList retainIntList) {

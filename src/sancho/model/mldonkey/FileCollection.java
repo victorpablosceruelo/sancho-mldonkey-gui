@@ -5,12 +5,11 @@
 
 package sancho.model.mldonkey;
 
-import gnu.trove.TObjectProcedure;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import gnu.trove.procedure.TObjectProcedure;
 import sancho.core.ICore;
 import sancho.model.mldonkey.enums.EnumFileState;
 import sancho.model.mldonkey.utility.MessageBuffer;
@@ -20,7 +19,7 @@ import sancho.view.preferences.PreferenceLoader;
 import sancho.view.transfer.FileClient;
 import sancho.view.utility.SResources;
 
-public class FileCollection extends ACollection_Int2 {
+public class FileCollection extends ACollection_Int2<File> {
   private static final String RS_ACTIVE = SResources.getString("l.active");
   private static final String RS_DOWNLOADED = SResources.getString("l.downloaded");
   private static final String RS_DOWNLOADS = SResources.getString("l.downloads");
@@ -309,8 +308,8 @@ public class FileCollection extends ACollection_Int2 {
 
   }
 
-  static class CommitAll implements TObjectProcedure {
-    public boolean execute(Object object) {
+  static class CommitAll implements TObjectProcedure<File> {
+    public boolean execute(File object) {
       File file = (File) object;
       if (file.getFileStateEnum() == EnumFileState.DOWNLOADED)
         file.saveFileAs(file.getName());
@@ -318,21 +317,21 @@ public class FileCollection extends ACollection_Int2 {
     }
   }
 
-  static class DisposeAll implements TObjectProcedure {
-    public boolean execute(Object object) {
+  static class DisposeAll implements TObjectProcedure<File> {
+    public boolean execute(File object) {
       ((File) object).dispose();
       return true;
     }
   }
 
-  static class ManualCleanAll implements TObjectProcedure {
-    public boolean execute(Object object) {
+  static class ManualCleanAll implements TObjectProcedure<File> {
+    public boolean execute(File object) {
       ((File) object).manualClean();
       return true;
     }
   }
 
-  static class GetAllInteresting implements TObjectProcedure {
+  static class GetAllInteresting implements TObjectProcedure<File> {
 
     List arrayList;
 
@@ -344,7 +343,7 @@ public class FileCollection extends ACollection_Int2 {
       return arrayList.toArray();
     }
 
-    public boolean execute(Object object) {
+    public boolean execute(File object) {
       File file = (File) object;
       if (file.isInteresting())
         arrayList.add(file);
@@ -352,9 +351,9 @@ public class FileCollection extends ACollection_Int2 {
     }
   }
 
-  static class RequestAllFileInfos implements TObjectProcedure {
+  static class RequestAllFileInfos implements TObjectProcedure<File> {
 
-    public boolean execute(Object object) {
+    public boolean execute(File object) {
       File file = (File) object;
       if (file.getFileStateEnum() == EnumFileState.DOWNLOADING)
         file.requestFileInfo();

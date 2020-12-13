@@ -5,8 +5,6 @@
 
 package sancho.view.utility.dialogs;
 
-import gnu.trove.TLongIntHashMap;
-
 import java.util.Arrays;
 import java.util.Date;
 
@@ -18,6 +16,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import gnu.trove.map.hash.TLongIntHashMap;
 import sancho.core.ICore;
 import sancho.core.Sancho;
 import sancho.view.preferences.PreferenceLoader;

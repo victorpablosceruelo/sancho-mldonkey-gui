@@ -21,6 +21,7 @@ import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.widgets.Table;
 
+import sancho.model.mldonkey.Client;
 import sancho.view.utility.SResources;
 import sancho.view.viewer.CustomTableViewer;
 import sancho.view.viewer.GView;
@@ -29,7 +30,7 @@ import sancho.view.viewer.actions.WebServicesAction;
 
 public abstract class GTableMenuListener implements IMenuListener, ISelectionChangedListener {
   protected GView gView;
-  protected List selectedObjects = Collections.synchronizedList(new ArrayList());
+  protected List<Object> selectedObjects = Collections.synchronizedList(new ArrayList());
   protected CustomTableViewer tableViewer;
 
   public GTableMenuListener(GView gView) {

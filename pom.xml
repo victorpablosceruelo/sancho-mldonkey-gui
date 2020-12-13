@@ -4,7 +4,6 @@
 	<artifactId>sancho-gui</artifactId>
 	<version>2</version>
 	
-	<packaging>pom</packaging>
 	<name>sancho-gui</name>
 	<description>Sancho GUI for MLDonkey</description>
 
@@ -15,23 +14,81 @@
 		    <groupId>org.eclipse.platform</groupId>
 		    <artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
 		    <version>3.115.0</version>
+		    <exclusions>
+		    	<exclusion>
+		    		<groupId>org.eclipse.platform</groupId>
+		    		<artifactId>org.eclipse.swt</artifactId>
+		    	</exclusion>
+		    </exclusions>
 		</dependency>
-	
+		
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.swt</artifactId>
+			<version>3.115.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.eclipse.jface/org.eclipse.jface -->
+		<!-- 
+		<dependency>
+		    <groupId>org.eclipse.jface</groupId>
+		    <artifactId>org.eclipse.jface</artifactId>
+		    <version>3.5.0.I20090525-2000</version>
+		</dependency>
+		 -->
+		 
+		<!-- https://mvnrepository.com/artifact/org.eclipse/jface -->
+		<dependency>
+		    <groupId>org.eclipse</groupId>
+		    <artifactId>jface</artifactId>
+		    <version>3.3.0-I20070606-0010</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/gnu.trove/trove -->
+		<dependency>
+		    <groupId>gnu.trove</groupId>
+		    <artifactId>trove</artifactId>
+		    <version>3.0.3</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/net.sf.trove4j/trove4j -->
+		<dependency>
+		    <groupId>net.sf.trove4j</groupId>
+		    <artifactId>trove4j</artifactId>
+		    <version>3.0.3</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
+		<dependency>
+		    <groupId>com.jcraft</groupId>
+		    <artifactId>jsch</artifactId>
+		    <version>0.1.55</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/gnu-regexp/gnu-regexp -->
+		<dependency>
+		    <groupId>gnu-regexp</groupId>
+		    <artifactId>gnu-regexp</artifactId>
+		    <version>1.1.4</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
 	    <sourceDirectory>src</sourceDirectory>
-	    <directory>${project.basedir}/tmp</directory>
+	    <directory>${project.basedir}/target</directory>
 	    <outputDirectory>${project.build.directory}</outputDirectory>
 	    
+	    <!-- 
 	    <resources>
 	       <resource>
-	        <directory></directory>
+	        <directory>src/resources</directory>
 	        <excludes>
 	          <exclude>**/*.java</exclude>
 	        </excludes>
 	      </resource>
 	    </resources>
+	     -->
 	    <plugins>
 	    	
 	    	
@@ -78,7 +135,8 @@
 	</build>
 
 	<repositories>
-	
+
+		<!-- 	
 		<repository>
 			<id>spring</id>
 			<url>https://repo.spring.io/plugins-release/</url>
@@ -93,7 +151,17 @@
 	          <id>jenkins-releases</id>
 	          <url>https://repo.jenkins-ci.org/releases/</url>
 	    </repository>
-
+		 -->
+		 
+	  	<repository>
+	          <id>icm-repository</id>
+	          <url>http://maven.icm.edu.pl/artifactory/repo/</url>
+	    </repository>
+	    
+	  	<repository>
+	          <id>TU-Darmstadt-Repository</id>
+	          <url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-releases/</url>
+	    </repository>
 	</repositories>
 	
     <pluginRepositories>

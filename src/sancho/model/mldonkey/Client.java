@@ -5,15 +5,13 @@
 
 package sancho.model.mldonkey;
 
-import gnu.trove.THash;
-import gnu.trove.THashMap;
-import gnu.trove.TIntObjectHashMap;
-
 import java.util.Map;
 import java.util.WeakHashMap;
 
 import org.eclipse.swt.graphics.Image;
 
+import gnu.trove.map.hash.THashMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
 import sancho.core.ICore;
 import sancho.model.mldonkey.enums.AbstractEnum;
 import sancho.model.mldonkey.enums.EnumClientMode;
@@ -54,9 +52,9 @@ public class Client extends AObjectO {
   public static final Integer iCHANGED_AVAIL = new Integer(CHANGED_AVAIL);
   public static final Integer iREAD_CLIENT_FILE = new Integer(READ_CLIENT_FILE);
 
-  protected THash avail;
+  protected gnu.trove.impl.hash.THash avail;
   protected int chatPort;
-  protected THashMap clientFilesMap;
+  protected gnu.trove.map.hash.THashMap<String, Object> clientFilesMap;
   protected EnumClientType enumClientType;
   protected int id;
   protected Kind kind;
@@ -92,10 +90,10 @@ public class Client extends AObjectO {
     return this.kind.getAddr();
   }
 
-  private TIntObjectHashMap getAvailMap() {
+  private TIntObjectHashMap<Object> getAvailMap() {
     if (avail == null)
-      avail = new TIntObjectHashMap();
-    return (TIntObjectHashMap) avail;
+      avail = new TIntObjectHashMap<>();
+    return (TIntObjectHashMap<Object>) avail;
   }
 
   public String getClientActivity() {
@@ -105,7 +103,7 @@ public class Client extends AObjectO {
       return RS_RANK + this.getStateRank();
   }
 
-  public THashMap getClientFilesMap() {
+  public THashMap<String, Object> getClientFilesMap() {
     if (clientFilesMap == null)
       clientFilesMap = new THashMap();
     return clientFilesMap;
@@ -379,7 +377,7 @@ public class Client extends AObjectO {
       return;
 
     synchronized (this) { // TODO: this
-      THashMap hashMap = getClientFilesMap();
+      THashMap<String, Object> hashMap = getClientFilesMap();
       Map resultMap;
 
       if (hashMap.containsKey(dirName)) {
