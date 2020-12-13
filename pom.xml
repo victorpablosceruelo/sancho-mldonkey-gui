@@ -7,25 +7,28 @@
 	<name>sancho-gui</name>
 	<description>Sancho GUI for MLDonkey</description>
 
+	<properties>
+		<osgi.platform>x86_64</osgi.platform>
+	</properties>
 	
 	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.swt</artifactId>
+			<version>3.114.100</version>
+		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.swt.gtk.linux.x86_64 -->
 		<dependency>
 		    <groupId>org.eclipse.platform</groupId>
 		    <artifactId>org.eclipse.swt.gtk.linux.x86_64</artifactId>
-		    <version>3.115.0</version>
+		    <version>3.114.100</version>
 		    <exclusions>
 		    	<exclusion>
 		    		<groupId>org.eclipse.platform</groupId>
-		    		<artifactId>org.eclipse.swt</artifactId>
+		    		<artifactId>org.eclipse.swt.*</artifactId>
 		    	</exclusion>
 		    </exclusions>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.eclipse.platform</groupId>
-			<artifactId>org.eclipse.swt</artifactId>
-			<version>3.115.0</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.eclipse.jface/org.eclipse.jface -->
