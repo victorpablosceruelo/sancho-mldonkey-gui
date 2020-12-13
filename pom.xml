@@ -131,6 +131,29 @@
 			  </configuration>
 			</plugin>
 			
+			<!-- always download sources and javadoc -->
+	        <plugin>
+	            <artifactId>maven-dependency-plugin</artifactId>
+	            <version>2.10</version>
+	            <executions>
+	                <execution>
+	                    <id>download-sources</id>
+	                    <goals>
+	                        <goal>sources</goal>
+	                    </goals>
+	                </execution>
+	                <execution>
+	                    <id>download-javadoc</id>
+	                    <configuration>
+	                        <classifier>javadoc</classifier>
+	                    </configuration>
+	                    <goals>
+	                        <goal>resolve</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	        </plugin>
+			
 		</plugins>
 	</build>
 
