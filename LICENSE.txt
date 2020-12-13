@@ -1,0 +1,30 @@
+sancho
+------
+
+Copyright (C) 2004-2005 Rutger M. Ovidius 
+Email: ovidr@users.sourceforge.net
+
+Common Public License
+Links with the Standard Widget Toolkit (CPL, http://www.eclipse.org/)
+also available as hooks to FOX: (CPL, http://swtfox.sourceforge.net/)
+
+GNU Trove LGPL: http://trove4j.sourceforge.net/
+GNU RegEx LGPL: http://www.cacas.org/java/gnu/regexp/
+PircBot: http://www.jibble.org/
+JSch: http://www.jcraft.com/jsch/
+CzLibs
+
+==
+
+This project was originally based upon the code, structure, style and design 
+that I wrote that might still be in use in another project (g2gui).   Portions 
+originally by others have been removed and written from scratch to make a 
+complete cohesive autonomous whole.
+
+Many features are also based upon the Eclipse JFace API which provides a layer
+of abstraction to the SWT API.  (CPL, http://www.eclipse.org/)
+
+MLdonkey core is based on the gui protocol specification of the mldonkey 
+project. http://www.nongnu.org/mldonkey/
+
+
