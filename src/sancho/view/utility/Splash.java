@@ -29,7 +29,8 @@ public class Splash {
   }
 
   public void createContents(Display display) {
-    shell = new Shell(display, SWT.NO_TRIM | SWT.NO_BACKGROUND | SWT.ON_TOP);
+	  //  | SWT.ON_TOP
+    shell = new Shell(display, SWT.NO_TRIM | SWT.NO_BACKGROUND);
     shell.setLayout(new FillLayout());
 
     Image image = SResources.getImage("splashScreen");

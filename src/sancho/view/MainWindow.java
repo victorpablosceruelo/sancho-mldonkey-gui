@@ -66,8 +66,8 @@ public class MainWindow implements ShellListener, Observer, DisposeListener {
   private static final int MESSAGES = 6;
   private static final int ROOMS = 7;
   private static final int WEBBROWSER = 8;
-  private static final String[] ALL_TAB_IDS = new String[]{"tab.transfers", "tab.search", "tab.servers",
-      "tab.shares", "tab.console", "tab.statistics", "tab.friends", "tab.rooms", "tab.webbrowser"};
+  private static final String[] ALL_TAB_IDS = new String[]{"tab.console"};
+  // "tab.transfers", "tab.search", "tab.servers", "tab.shares", , "tab.statistics", "tab.friends", "tab.rooms", "tab.webbrowser"
   private static final String prefString = "mainWindow";
   private String titleBarText = VersionInfo.getName() + " " + VersionInfo.getVersion();
   private CToolBar coolBar;
@@ -242,7 +242,7 @@ public class MainWindow implements ShellListener, Observer, DisposeListener {
     int arrayItem;
     for (int i = 0; i < prefTabs.length(); i++) {
       arrayItem = prefTabs.charAt(i) - IDSelector.MAGIC_NUMBER;
-      addTab(arrayItem);
+   	  addTab(arrayItem);
     }
     setVisible(true);
 
