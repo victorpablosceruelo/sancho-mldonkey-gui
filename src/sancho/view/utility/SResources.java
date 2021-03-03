@@ -67,9 +67,10 @@ public class SResources {
 
     ResourceBundle bundle;
 
-    if (!file.exists())
-      bundle = ResourceBundle.getBundle(VersionInfo.getName());
-    else {
+    if (!file.exists()) {
+    	String baseName = VersionInfo.getName();
+    	bundle = ResourceBundle.getBundle(baseName);
+    } else {
       try {
         String language = "";
         String country = "";
@@ -197,7 +198,8 @@ public class SResources {
       String buttonString = "tab." + buttonFiles[i];
 
       reg.put(buttonString + ".button", createRawImage(buttonFiles[i] + ".gif"));
-      reg.put(buttonString + ".buttonActive", createActiveImage(reg.getDescriptor(buttonString + ".button")));
+      ImageDescriptor imgDescriptor = reg.getDescriptor(buttonString + ".button");
+      reg.put(buttonString + ".buttonActive", createActiveImage(imgDescriptor));
       reg.put(buttonString + ".buttonSmall", createRawImage(buttonFiles[i] + "-16.gif"));
       reg.put(buttonString + ".buttonSmallActive", createActiveImage(reg.getDescriptor("tab."
           + buttonFiles[i] + ".buttonSmall")));

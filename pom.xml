@@ -9,6 +9,8 @@
 
 	<properties>
 		<osgi.platform>x86_64</osgi.platform>
+		<downloadSources>true</downloadSources>
+        <downloadJavadocs>true</downloadJavadocs>
 	</properties>
 	
 	<dependencies>
@@ -86,17 +88,13 @@
 	    <sourceDirectory>src</sourceDirectory>
 	    <directory>${project.basedir}/target</directory>
 	    <outputDirectory>${project.build.directory}</outputDirectory>
-	    
-	    <!-- 
+	     
 	    <resources>
 	       <resource>
-	        <directory>src/resources</directory>
-	        <excludes>
-	          <exclude>**/*.java</exclude>
-	        </excludes>
+	        <directory>resources</directory>
 	      </resource>
 	    </resources>
-	     -->
+	    
 	    <plugins>
 	    	
 	    	
@@ -145,12 +143,14 @@
 	            <version>2.10</version>
 	            <executions>
 	                <execution>
+	                	<?m2e ignore?>
 	                    <id>download-sources</id>
 	                    <goals>
 	                        <goal>sources</goal>
 	                    </goals>
 	                </execution>
 	                <execution>
+	                	<?m2e ignore?>
 	                    <id>download-javadoc</id>
 	                    <configuration>
 	                        <classifier>javadoc</classifier>
@@ -162,6 +162,33 @@
 	            </executions>
 	        </plugin>
 			
+			
+				       <plugin>
+	            <artifactId>maven-resources-plugin</artifactId>
+	            <version>3.1.0</version>
+	            <executions>
+	                
+	               	 <execution>
+	               	 <id>copy-resources</id>
+	                    <phase>generate-sources</phase>
+	                    <goals>
+	                        <goal>copy-resources</goal>
+	                    </goals>
+	                	<configuration>
+	              			<outputDirectory>${project.build.outputDirectory}</outputDirectory>
+	              			<resources>          
+	                			<resource>
+	                  				<directory>resources</directory>
+	                  				<filtering>true</filtering>
+	                			</resource>
+	                		</resources>  
+	                	</configuration>
+	                	           
+	            	</execution>
+	            	
+	           </executions>
+	        </plugin>
+	        
 		</plugins>
 	</build>
 

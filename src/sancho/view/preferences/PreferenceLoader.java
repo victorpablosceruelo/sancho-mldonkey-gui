@@ -45,6 +45,7 @@ public class PreferenceLoader {
   private static String localeString;
   private static String homeDirectory;
   private static String ENTRY_SEPARATOR = ";";
+  private static String defaultLocaleString = "en_US";
 
   private PreferenceLoader() {
   }
